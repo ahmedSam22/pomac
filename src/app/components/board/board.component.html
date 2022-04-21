@@ -6,9 +6,7 @@
         <button type="button" class="btn btn-primary">+ New Task</button>
       </div>
       <div class="col-12">
-        <div *ngFor="let item of lists">
-          {{ item.name }}
-        </div>
+        <app-list *ngFor="let list of lists" [list]="list" [cardStore]="cardStore"></app-list>
         <button
           class="btn"
           type="button"

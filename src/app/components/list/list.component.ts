@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CardStore } from '../card/card-store';
+import { List } from './list';
+
+
 
 @Component({
   selector: 'app-list',
@@ -8,7 +12,9 @@ import { Component, OnInit } from '@angular/core';
 export class ListComponent implements OnInit {
 
   constructor() { }
-
+  @Input() list: List;
+  @Input() cardStore: CardStore;
+  displayAddCard = false;
   ngOnInit(): void {
   }
   allowDrop($event:any) {
@@ -37,5 +43,14 @@ export class ListComponent implements OnInit {
     } else {
       target.appendChild(document.getElementById(data));
     }
+  }
+
+  onEnter(value: string) {
+    const cardId = this.cardStore.newCard(value);
+    this.list.cards.push(cardId);
+  }
+
+  toggleDisplayAddCard() {
+    this.displayAddCard = !this.displayAddCard;
   }
 }

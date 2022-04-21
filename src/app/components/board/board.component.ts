@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from '../card/card';
+import { CardStore } from '../card/card-store';
 import { List } from '../list/list';
 
 @Component({
@@ -9,6 +10,7 @@ import { List } from '../list/list';
 })
 export class BoardComponent implements OnInit {
   newList: string = '';
+  cardStore: CardStore;
   lists: List[];
   constructor() {}
 
@@ -16,7 +18,7 @@ export class BoardComponent implements OnInit {
     this.setMockData();
   }
   setMockData(): void {
-    // this.cardStore = new CardStore();
+    this.cardStore = new CardStore();
     const lists: List[] = [
       {
         name: 'Tasks',
