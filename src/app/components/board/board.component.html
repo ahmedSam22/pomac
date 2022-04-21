@@ -3,10 +3,21 @@
     <div class="row">
       <div class="d-flex justify-content-between col-12 w-100 p-2">
         <h3>Pomac Front End Technical Task</h3>
-        <button type="button" class="btn btn-primary">+ New Task</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal2"
+        >
+          + New Task
+        </button>
       </div>
       <div class="col-12">
-        <app-list *ngFor="let list of lists" [list]="list" [cardStore]="cardStore"></app-list>
+        <app-list
+          *ngFor="let list of lists"
+          [list]="list"
+          [cardStore]="cardStore"
+        ></app-list>
         <button
           class="btn"
           type="button"
@@ -52,6 +63,56 @@
         <button type="button" class="btn btn-primary" (click)="addList()">
           Submit
         </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal2"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel2"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">Modal title</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <label for="title">
+            Title
+            <input type="text" class="form-control" [(ngModel)]="logic.title" [ngModelOptions]="{standalone: true}" />
+          </label>
+
+          <label for="title">
+            description
+            <input type="text" class="form-control" [(ngModel)]="logic.desc" [ngModelOptions]="{standalone: true}" />
+          </label>  <label for="title">
+            img
+            <input type="text" class="form-control" [(ngModel)]="logic.img" [ngModelOptions]="{standalone: true}" />
+          </label>  <label for="title">
+            date
+            <input type="text" class="form-control" [(ngModel)]="logic.date" [ngModelOptions]="{standalone: true}" />
+          </label>  <label for="title">
+            users
+            <input type="text" class="form-control" [(ngModel)]="logic.users" [ngModelOptions]="{standalone: true}" />
+          </label>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" (click)="logic.addTask()">Save changes</button>
       </div>
     </div>
   </div>

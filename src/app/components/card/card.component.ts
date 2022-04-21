@@ -4,13 +4,16 @@ import { Card } from './card';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.sass']
+  styleUrls: ['./card.component.sass'],
 })
 export class CardComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
+  @Input() card: Card;
 
   ngOnInit(): void {
+    console.log(this.card);
   }
-  @Input() card: Card;
+  dragStart(ev:any) {
+    ev.dataTransfer.setData("text", ev.target.id);
+  }
 }

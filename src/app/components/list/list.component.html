@@ -4,23 +4,9 @@
   </p>
   <div class="cards">
     <app-card
-      *ngFor="let cardId of list.cards"
-      [card]="cardStore.getCard(cardId)"
+      *ngFor="let cardId of logic.lists;let i = index"
+      [card]="logic.lists[i]"
     ></app-card>
   </div>
 
-  <input
-    #addCardInput
-    type="text"
-    (keyup.enter)="
-      onEnter(addCardInput.value);
-      addCardInput.value = '';
-      displayAddCard = false
-    "
-    *ngIf="displayAddCard"
-    autofocus
-  />
-  <a href="#" class="list__newcard" (click)="toggleDisplayAddCard()"
-    >Add a card...</a
-  >
 </div>

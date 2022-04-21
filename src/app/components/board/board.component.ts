@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LogicalService } from 'src/app/services/logical.service';
 import { Card } from '../card/card';
 import { CardStore } from '../card/card-store';
 import { List } from '../list/list';
@@ -12,7 +13,7 @@ export class BoardComponent implements OnInit {
   newList: string = '';
   cardStore: CardStore;
   lists: List[];
-  constructor() {}
+  constructor(public logic: LogicalService) {}
 
   ngOnInit(): void {
     this.setMockData();
@@ -39,5 +40,4 @@ export class BoardComponent implements OnInit {
     this.lists.push(list);
     console.log(this.lists);
   }
-
 }
